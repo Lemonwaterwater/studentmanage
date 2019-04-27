@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+<!--
+	.a{
+		background-color:#36AFFB;
+		text-emphasis-color: #FFFFFF;
+		height: 60px;
+		color: #FFFFFF;
+		text-align: center;
+		padding-top: 15px;
+		margin-left: 20%;
+		margin-right: 20%;
+		
+	}
+	.b{
+	background-color:#36AFFB;
+	height: 10px;
+	}	
+	.c{
+		width: 600px;
+		height: 400px;
+	}
+	.tab{
+		text-align: center;
+		margin-left: 20%;
+		margin-right: 20%;
+	}
+-->
+</style>
+</head>
+<body>
+<center>
+<table class="tab" width="" height="50" border="1">
+ <h2 class="a">欢迎使用查询功能</h2>
+  <tbody>
+    <tr>
+      <td width="951">contents:</td>
+  	  <td colspan="2"><a href="content"><center>返回页面</center></a> </td>
+  	  </tr>
+      <div th:each=student:${student}>
+     <tr>
+
+      <td><div th:text=${student.student}></div></td>
+      <td width="66"><a href= "#" th:href="@{/up(id=${content.id})}"><center>修改</center></a></td>
+    <td width="66"><a href= "#" th:href="@{/deletes(id=${content.id})}"><center>删除</center></a></td>
+       
+      
+    </tr>
+  </tbody>
+</table>
+</br>
+
+</center>
+</body>
+</html>
