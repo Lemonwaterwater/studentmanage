@@ -25,7 +25,6 @@ public class IndexDao {
   User user = new User();
 
 
-
     public Session getSession(){
         return entityManager.unwrap(Session.class);
     }
@@ -50,31 +49,13 @@ public class IndexDao {
         this.getSession().update(student);
     }
 
-    public List<Student>findOne(User user){
-        DetachedCriteria dc = DetachedCriteria.forClass(Student.class);
-        Criteria criteria = dc.getExecutableCriteria(getSession());
-        dc.add(Restrictions.eq("user",user));
-        List<Student> list = criteria.list();
-        return list;
-    }
-
-
-    public User findByUsername(String username){										//查询数据库某字段数据
-        DetachedCriteria dc = DetachedCriteria.forClass(User.class);
-        dc.add(Restrictions.eq("username",username));
-        Criteria b = dc.getExecutableCriteria(getSession());
-        List<User> list=b.list();
-        if(list != null && list.size()>0) {
-            return list.get(0);
-        }else{
-            return null ;
-        }
-
+    public User findById(String id) {
+        User user = (User)getSession().get(User.class, id);
+        return user;
     }
 
     public Student findByNo(String stuNo){
         Student student = (Student)getSession().get(Student.class,stuNo);
         return student;
     }
-
 }
