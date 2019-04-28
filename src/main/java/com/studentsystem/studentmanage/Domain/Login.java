@@ -3,17 +3,13 @@ package com.studentsystem.studentmanage.Domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 @Data
-@Entity
-public class User {
+public class Login {
 
-    @Id
-    private int id;
-    private String qqemail;
+
+    private String id;
     private String username;
     private String password;
     private String password1;
+    private String qqemail;
 }

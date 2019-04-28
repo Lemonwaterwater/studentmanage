@@ -49,7 +49,7 @@ public class IndexDao {
         this.getSession().update(student);
     }
 
-    public User findById(String id) {
+    public User findById(int id) {
         User user = (User)getSession().get(User.class, id);
         return user;
     }
@@ -57,5 +57,18 @@ public class IndexDao {
     public Student findByNo(String stuNo){
         Student student = (Student)getSession().get(Student.class,stuNo);
         return student;
+    }
+
+    public User findByUsename(String username){										//查询数据库某字段数据
+        DetachedCriteria dc = DetachedCriteria.forClass(User.class);
+        dc.add(Restrictions.eq("username",username));
+        Criteria b = dc.getExecutableCriteria(getSession());
+        List<User>list=b.list();
+        if(list != null && list.size()>0) {
+            return list.get(0);
+        }else{
+            return null ;
+        }
+
     }
 }
