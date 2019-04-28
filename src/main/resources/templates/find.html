@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style type="text/css">
 <!--
 	.a{
@@ -21,7 +22,7 @@
 	height: 10px;
 	}	
 	.c{
-		width: 600px;
+
 		height: 400px;
 	}
 	.tab{
@@ -41,19 +42,28 @@
       <td width="951">contents:</td>
   	  <td colspan="2"><a href="content"><center>返回页面</center></a> </td>
   	  </tr>
-      <div th:each=student:${student}>
+      <div th:each=student:${student?.items}>
      <tr>
 
-      <td><div th:text=${student.student}></div></td>
-      <td width="66"><a href= "#" th:href="@{/up(id=${content.id})}"><center>修改</center></a></td>
-    <td width="66"><a href= "#" th:href="@{/deletes(id=${content.id})}"><center>删除</center></a></td>
-       
-      
+         <td><div th:text=${student?.stuNo}></div></td>
+         <td><div th:text=${student?.name}></div></td>
+         <td><div th:text=${student?.sex}></div></td>
+         <td><div th:text=${student?.nativePlace}></div></td>
+         <td><div th:text=${student?.birthday}></div></td>
+         <td><div th:text=${student?.className}></div></td>
+      <td width="66"><a href= "#" th:href="@{/up(id=${content?.id})}"><center>修改</center></a></td>
+    <td width="66"><a href= "#" th:href="@{/deletes(id=${content?.id})}"><center>删除</center></a></td>
+
     </tr>
+      </div>
   </tbody>
 </table>
 </br>
-
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item active"th:class="${count==student?.page}?'page-item active':'page-item'" th:each="count:${student?.pages}"><a class="page-link" href="#"th:href="|?page=${count}|" th:text="${count}"></a></li>
+        </ul>
+    </nav>
 </center>
 </body>
 </html>

@@ -1,11 +1,13 @@
 package com.studentsystem.studentmanage.Dao;
 
 
+import com.studentsystem.studentmanage.Controller.MyPage;
 import com.studentsystem.studentmanage.Domain.Student;
 import com.studentsystem.studentmanage.Domain.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -52,6 +54,17 @@ public class IndexDao {
     public User findById(int id) {
         User user = (User)getSession().get(User.class, id);
         return user;
+    }
+
+    public  MyPage<Student> findall(Integer pagesize,Integer page) {
+        DetachedCriteria dc = DetachedCriteria.forClass(Student.class);
+        Criteria criteria = dc.getExecutableCriteria(getSession());
+        long object = (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
+        MyPage<Student> myPage = new MyPage( (int) object, pagesize, page);
+        criteria.setProjection(null);
+        List<Student> list = criteria.setFirstResult(myPage.getStartindex()).setMaxResults(pagesize).list();
+        myPage.setItems(list);
+         return myPage;
     }
 
     public Student findByNo(String stuNo){
