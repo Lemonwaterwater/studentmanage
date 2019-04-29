@@ -39,7 +39,7 @@
  <h2 class="a">欢迎使用查询功能</h2>
   <tbody>
     <tr>
-      <td width="951">contents:</td>
+      <td width="">contents:</td>
   	  <td colspan="2"><a href="content"><center>返回页面</center></a> </td>
   	  </tr>
       <div th:each=student:${student?.items}>
@@ -51,8 +51,8 @@
          <td><div th:text=${student?.nativePlace}></div></td>
          <td><div th:text=${student?.birthday}></div></td>
          <td><div th:text=${student?.className}></div></td>
-      <td width="66"><a href= "#" th:href="@{/up(id=${content?.id})}"><center>修改</center></a></td>
-    <td width="66"><a href= "#" th:href="@{/deletes(id=${content?.id})}"><center>删除</center></a></td>
+      <td width="66"><a href= "#" th:href="@{/up(stuNo=${student?.stuNo})}"><center>修改</center></a></td>
+    <td width="66"><a href= "#" th:href="@{/deletes(stuNo=${student?.stuNo})}"><center>删除</center></a></td>
 
     </tr>
       </div>
@@ -61,7 +61,7 @@
 </br>
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item active"th:class="${count==student?.page}?'page-item active':'page-item'" th:each="count:${student?.pages}"><a class="page-link" href="#"th:href="|?page=${count}|" th:text="${count}"></a></li>
+            <li class="page-item active" th:class="${count==student?.page}?'page-item active':'page-item'" th:each="count:${student?.pages}"><a class="page-link" href="#"th:href="|?page=${count}|" th:text="${count}"></a></li>
         </ul>
     </nav>
 </center>

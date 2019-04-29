@@ -12,15 +12,14 @@
         img{width: 100%;display: block;}
         input{border: 2px #cad0d7 solid;}
     </style>
-    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
-<form th:action="@{/login}" method="post">
     <div class="box">
         <div class="box_row">
             <div class="box_main">
                 <div class="box_left">
-                    <img th:src="@{img/background_left.png}" class="background_left">
+                    <img src="image/background_left.png" class="background_left">
                 </div>
                 <div class="box_right">
                     <div class="box_right_row">
@@ -28,15 +27,15 @@
                         <h4>使用您的账户登录</h4>
                         <div class="login_user">
                             <div class="login_img">
-                                <img th:src="@{img/user.png}">
+                                <img src="image/user.png">
                             </div>
-                            <input type="text" name="username" id="user" placeholder='用户名'>
+                            <input type="text" name="user" id="user" placeholder='用户名'>
                         </div>
                         <div class="login_password">
                             <div class="login_img">
-                                <img th:src="@{img/lock.png}" >
+                                <img src="image/lock.png" >
                             </div>
-                            <img th:src="@{img/eyes_close.png}" id='eyes' onclick="changeEyes()">
+                            <img src="image/eyes_close.png" id='eyes' onclick="changeEyes()">
                             <input type="password" name="password" id="password" placeholder='密码' >
                         </div>
                         <div class="register">
@@ -49,13 +48,14 @@
                                 忘记密码？
                             </a>
                         </div>
-                        <input type="submit" class="login" value="登录">
+                        <a href="" class="login">
+                            登录
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</form>
-    <script type="text/javascript" th:src="@{js/index.js}"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

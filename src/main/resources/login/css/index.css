@@ -1,0 +1,254 @@
+@charset "UTF-8";
+/**
+ *
+ * @authors ide
+ * @email   794958215@qq.com
+ * @date    2019-04-26 19:45:44
+ * @version $Id$
+ */
+.box{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    background-image: url('../image/background.png');
+
+}
+.box_row{
+    display: flex;
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    align-items:center;
+}
+.box_row:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.box_main{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 3%;
+    overflow: hidden;
+    background-color: #fff;
+    opacity: 0.8;
+}
+.box_main:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.box_left{
+    width: 50%;
+    height: auto;
+    display: block;
+    float: left;
+}
+.background_left{
+    height: 100%;
+}
+.box_left:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.box_right{
+    width: 50%;
+    height: auto;
+    display: block;
+    float: left;
+
+}
+.title{
+    margin-top:20%;
+    font-family: 微软雅黑;
+    font-weight: 100;
+    text-align: center;
+}
+.box_right_row{
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+.box_right_row:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.box_right_row h4{
+    margin-top: 10%;
+    font-size: 15px;
+    font-weight: 400;
+}
+.box_right:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.login_user{
+    height: 45px;
+    width: 100%;
+    position: relative;
+    margin-top: 5%;
+}
+.login_img{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+#user{
+    width: 90%;
+    height: 40px;
+    padding-left: 45px;
+}
+.login_password{
+    height: 45px;
+    width: 100%;
+    position: relative;
+    margin-top: 5%;
+}
+#password{
+    width: 90%;
+    height: 40px;
+    padding-left: 45px;
+}
+#eyes{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.register{
+    display: block;
+    width: 50%;
+    float: left;
+    text-align: left;
+    margin-top: 10%;
+}
+.register a{
+    color: #4e7f9f;
+}
+.register:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.forget_password{
+    display:block;
+    width: 50%;
+    float: left;
+    text-align:right;
+    margin-top: 10%;
+}
+.forget_password a{
+    color: #4e7f9f;
+}
+.forget_password:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.login{
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    margin-top: 20%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: 100;
+    border: 1px #434c82 solid;
+    background-color: #fff;
+    border-radius: 10px;;
+    color: #778899;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 800px){
+    .box{
+        background-image: url('../image/background.png');
+    }
+    .box_row{
+        width: 50%;
+    }
+    .box_main{
+        display: flex;
+        height: 100%;
+        border: 0;
+        border-radius: 0;
+        background-color: transparent;
+    }
+    .box_left{
+        display: none;
+    }
+    .box_right{
+        display: flex;
+        align-items:center;
+        width: 100%;
+    }
+    .box_right_row{
+        background-color: #e3e8ec;
+        opacity: 0.8;
+        width: 100%;
+        padding: 10%;
+    }
+    .title{
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    .box_right_row h4{
+        font-size: 13px;
+    }
+    .login_user{
+        height: 30px;
+    }
+    .login_img{
+        width: 15px;
+        height: 15px;
+        top: 10px;
+        left: 10px;
+    }
+    #user{
+        width: 85%;
+        height: 30px;
+        font-size: 12px;
+        padding-left: 35px;
+        margin-right: 35px;
+    }
+    .login_password{
+        height: 30px;
+    }
+    #eyes{
+        width: 15px;
+        height: 15px;
+        top: 10px;
+        right: 10px;
+    }
+    #password{
+        width: 85%;
+        height: 30px;
+        font-size: 12px;
+        padding-left: 35px;
+        margin-right: 35px;
+    }
+    .register a{
+        font-size: 13px;
+    }
+    .forget_password a{
+        font-size: 13px;
+    }
+    .login{
+        height: 30px;
+        font-size: 1.5em;
+        line-height: 30px;
+    }
+}
