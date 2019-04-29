@@ -5,6 +5,7 @@ import com.studentsystem.studentmanage.Dao.IndexDao;
 import com.studentsystem.studentmanage.Domain.Login;
 import com.studentsystem.studentmanage.Domain.Student;
 import com.studentsystem.studentmanage.Domain.User;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @ControllerAdvice
@@ -46,7 +49,7 @@ public class IndexController {
 
     @GetMapping("/registered")
     public String add(){
-        return "registered";
+        return "register";
     }
 
     @GetMapping("/find")
@@ -61,10 +64,10 @@ public class IndexController {
 
 
     @PostMapping("/save")
-    public String Registered(@Valid Login login, String username, String email, String code){
-//        if(!email.equals(code)){  //输入邮箱
-//            return "error";
-//        }
+    public Object Registered(@Valid Login login,HttpSession session, String username, String Verification_Code, String code){
+        if(!Verification_Code.equals(code)){  //输入邮箱
+            return "error";
+        }
 
         User user = new User();
         user.setUsername(username);
@@ -73,11 +76,13 @@ public class IndexController {
         }
         user.setPassword(login.getPassword());
         user.setPassword1(login.getPassword1());
+        user.setQqemail(login.getQqemail());
+
         if(login.getPassword().equals(login.getPassword1())){
             indexDao.save(user);
             return "redirect:/";
         }
-        return "registered";
+        return "upmi";
     }
 
 

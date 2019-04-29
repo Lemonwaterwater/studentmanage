@@ -12,7 +12,7 @@
     height: 100%;
     position: absolute;
     bottom: 0;
-    background-image: url('../image/background.png');
+    background-image: url('../img/background.png');
 
 }
 .box_row{
@@ -168,14 +168,18 @@
     font-weight: 100;
     border: 1px #434c82 solid;
     background-color: #fff;
-    border-radius: 10px;;
+    border-radius: 10px;
     color: #778899;
     overflow: hidden;
+    cursor: pointer;
+}
+input.login:focus{
+    outline: none;
 }
 
 @media only screen and (max-width: 800px){
     .box{
-        background-image: url('../image/background.png');
+        background-image: url('../img/background.png');
     }
     .box_row{
         width: 50%;
@@ -222,7 +226,6 @@
         height: 30px;
         font-size: 12px;
         padding-left: 35px;
-        margin-right: 35px;
     }
     .login_password{
         height: 30px;
@@ -238,7 +241,6 @@
         height: 30px;
         font-size: 12px;
         padding-left: 35px;
-        margin-right: 35px;
     }
     .register a{
         font-size: 13px;
@@ -250,5 +252,41 @@
         height: 30px;
         font-size: 1.5em;
         line-height: 30px;
+    }
+}
+@media only screen and (max-width: 500px){
+    .box_right_row .login_user{
+        height: 25px;
+    }
+    .box_right_row .login_img{
+        width: 10px;
+        height: 10px;
+    }
+    .login_user #user{
+        height: 25px;
+        width: 80%;
+        padding-left: 25px;
+    }
+    .box_right_row .login_password{
+        height: 25px;
+    }
+    .login_password #password{
+        height: 25px;
+        width: 80%;
+        padding-left: 25px;
+    }
+    #eyes{
+        width: 10px;
+        height: 10px;
+        right: 10%;
+    }
+    .box_right_row .register a{
+        font-size: 12px;
+    }
+    .box_right_row  .forget_password a{
+        font-size: 12px;
+    }
+    .box_right_row .login{
+        font-size: 15px;
     }
 }

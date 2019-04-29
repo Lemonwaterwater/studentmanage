@@ -12,7 +12,7 @@
         img{width: 100%;display: block;}
         input{border: 2px #cad0d7 solid;}
     </style>
-    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/login.css}">
 </head>
 <body>
 <form th:action="@{/login}" method="post">
@@ -40,7 +40,7 @@
                             <input type="password" name="password" id="password" placeholder='密码' >
                         </div>
                         <div class="register">
-                            <a href="">
+                            <a th:href="@{/registered}">
                                 注册
                             </a>
                         </div>

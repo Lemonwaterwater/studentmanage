@@ -1,0 +1,184 @@
+@charset "UTF-8";
+/**
+ *
+ * @authors ide
+ * @email   794958215@qq.com
+ * @date    2019-04-29 09:38:32
+ * @version $Id$
+ */
+.box{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    background-image: url('../img/background.png');
+
+}
+.box_row{
+    display: flex;
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    align-items:center;
+}
+.box_row:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.box_main{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 3%;
+    overflow: hidden;
+    background-color: #fff;
+    opacity: 0.8;
+}
+.box_main:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.box_right{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.title{
+    margin-top: 5%;
+    font-family: 微软雅黑;
+    font-weight: 100;
+    text-align: center;
+    color:  #A9A9A9;
+    letter-spacing: 1em;
+    margin-left: 1em;
+}
+.box_right_row{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+}
+.box_right_row:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.box_right:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.login_user{
+    height: 45px;
+    width: 100%;
+    position: relative;
+    margin-top: 5%;
+}
+.login_img{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+#user{
+    width: 90%;
+    height: 40px;
+    padding-left: 45px;
+}
+.login_password{
+    height: 45px;
+    width: 100%;
+    position: relative;
+    margin-top: 5%;
+}
+#password{
+    width: 90%;
+    height: 40px;
+    padding-left: 45px;
+}
+#eyes{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    right: 5%;
+    cursor: pointer;
+}
+#confirm_eyes{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    right: 5%;
+    cursor: pointer;
+}
+.confirm_password{
+    height: 45px;
+    width: 100%;
+    position: relative;
+    margin-top: 5%;
+}
+#confirm_password{
+    width: 90%;
+    height: 40px;
+    padding-left: 45px;
+}
+.mailbox{
+    height: 45px;
+    width: 100%;
+    position: relative;
+    margin-top: 5%;
+}
+#mailbox{
+    width: 90%;
+    height: 40px;
+    padding-left: 45px;
+}
+.Verification_Code{
+    height: 45px;
+    width: 100%;
+    position: relative;
+    margin-top: 5%;
+}
+#Verification_Code{
+    width: 90%;
+    height: 40px;
+    padding-left: 45px;
+}
+#getVerification{
+    position: absolute;
+    top: 8px;
+    right: 5%;
+    border-radius: 10px;
+    padding: 4px 8px;
+    cursor: pointer;
+    background-color: #fff;
+        color: #A9A9A9;
+}
+input#getVerification:focus{
+    outline: none;
+}
+.login{
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    margin: 10% 0;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: 100;
+    border: 1px #434c82 solid;
+    background-color: #fff;
+    border-radius: 10px;
+    color: #778899;
+    overflow: hidden;
+    cursor: pointer;
+}
+input.login:focus{
+    outline: none;
+}
