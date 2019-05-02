@@ -12,14 +12,15 @@
     height: 100%;
     position: absolute;
     bottom: 0;
+    top: 0;
     background-image: url('../img/background.png');
-
 }
 .box_row{
     display: flex;
-    width: 50%;
+    width: 30%;
     height: auto;
     margin: 0 auto;
+    overflow: hidden;
     align-items:center;
 }
 .box_row:after{
@@ -57,9 +58,7 @@
     margin-left: 1em;
 }
 .box_right_row{
-    width: 90%;
-    height: auto;
-    margin: 0 auto;
+    padding: 10%;
 }
 .box_right_row:after{
     display: block;
@@ -157,7 +156,8 @@
     padding: 4px 8px;
     cursor: pointer;
     background-color: #fff;
-        color: #A9A9A9;
+    border: 0;
+    color: red;
 }
 input#getVerification:focus{
     outline: none;
@@ -165,20 +165,88 @@ input#getVerification:focus{
 .login{
     display: block;
     text-align: center;
-    vertical-align: middle;
     width: 100%;
-    margin: 10% 0;
+    margin-top: 5%;
     height: 40px;
     line-height: 40px;
     font-size: 20px;
     font-weight: 100;
-    border: 1px #434c82 solid;
-    background-color: #fff;
-    border-radius: 10px;
-    color: #778899;
+    border: 0;
+    background-color: #0186ca;
+    color: #fff;
     overflow: hidden;
     cursor: pointer;
 }
 input.login:focus{
     outline: none;
+}
+@media only screen and (max-width: 1500px) {
+    #eyes{
+        right: 5%;
+    }
+    #confirm_eyes{
+        right: 5%;
+    }
+    #getVerification{
+        right: 5%;
+    }
+    .box_row{
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .box .box_row{
+        width: 60%;
+    }
+    .box_right_row .login_user{
+        height: 30px;
+    }
+    .login_img{
+        width: 15px;
+        height: 15px;
+    }
+    #user{
+        height: 30px;
+        padding-left: 30px;
+    }
+    .box_right_row .login_password{
+        height: 30px;
+    }
+    #password{
+        height: 30px;
+        padding-left: 30px;
+    }
+    #eyes{
+        width: 15px;
+        height: 15px;
+    }
+    .box_right_row .confirm_password{
+        height: 30px;
+    }
+    #confirm_password{
+        height: 30px;
+        padding-left: 30px;
+    }
+    #confirm_eyes{
+        width: 15px;
+        height: 15px;
+    }
+    .box_right_row .mailbox{
+        height: 30px;
+    }
+    #mailbox{
+        height: 30px;
+        padding-left: 30px;
+    }
+    .box_right_row .Verification_Code{
+        height: 30px;
+    }
+    #Verification_Code{
+        height: 30px;
+        padding-left: 30px;
+    }
+    #getVerification{
+        font-size: 12px;
+        top: 5px;
+    }
 }

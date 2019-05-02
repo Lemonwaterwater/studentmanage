@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>找回密码</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;}
+        ul,li{list-style: none;}
+        body{font-size: 14px;font-family: "微软雅黑";margin: 0;padding: 0;}
+        img{  width: 40px;margin-left:-10px;margin-top:-13px;}
+        input{border: 2px #cad0d7 solid;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/forgword.css"th:href="@{/css/forgword.css}">
+</head>
+<body>
+<form method="get" action="">
+ <div class="box">
+        <div class="box_row">
+            <div class="box_main">
+                <div class="box_left">
+                    <img src="img/background_left.png" th:src="@{img/background_left.png}"class="background_left">
+                </div>
+                <div class="box_right">
+                    <div class="box_right_row">
+                        <h1 class="title">找回密码</h1>
+                        <div class="underline"></div>
+                        <div class="h">请输入注册时使用的邮箱账号</div>
+
+                        <div class="login_email">
+                            <div class="login_img">
+                                <img src="img/email.png"th:src="@{img/email.png}">
+                            </div>
+                            <input type="text" name="email" id="email" placeholder='邮箱账号'>
+                        </div>
+
+                        <div class="login_vcode">
+                            <div class="login_img">
+                                <img src="img/v.png" th:src="@{img/v.png}">
+                            </div>
+                            <input type="button" name="obtion" id="obtion" value="获取验证码">
+                            </input>
+                            <input type="text" name="Verification_Code" id="vcode" placeholder='验证码' >
+                            <input type="text" name="code" id="code" hidden="hidden">
+                        </div>
+
+                        <div class="login_password">
+                            <div class="login_img">
+                                <img src="img/lock.png"th:src="@{img/lock.png}">
+                            </div>
+                            <img src="img/eyes_close.png" th:src="@{img/eyes_close.png}"id='eyes' onclick="changeEyes()">
+                            <input type="password" name="password" id="password" placeholder='新密码' >
+                        </div>
+                        <div class="register">
+
+                        </div>
+                        <div class="forget_password">
+
+                        </div>
+                        <input type="submit" value="确认提交" name="login" id="login">
+                        <a th:href="@{/}" class="login_bottom">
+                            回到登录页
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <script type="text/javascript" th:src="@{js/forgword.js}"></script>
+<script th:src="@{/js/jquery-1.8.2.min.js}"></script>
+<script th:src="@{/js/supersized.3.2.7.min.js}"></script>
+<script th:src="@{/js/supersized-init.js}"></script>
+<script th:src="@{/js/iziToast.min.js}" ></script>
+<script th:inline="javascript">
+    $("#obtion").click(function () {   //getVerification是获取button事件 调用ajax函数
+        $.ajax({
+            url:"/email",//这里直接通过get方法访问eamilservice里的发送邮件的方法
+            type:"get",
+            data:{"qqemail":$("#email").val()},//qqemail是传给eamilservice的值 mailbox是获取前台的值
+            success:function (code) {
+                code = $("#code").val(code)
+            }
+        })
+    })
+
+    $(".login").click(function () {
+        let user_code = $("#obtion").val();
+        var code = $("#code").val();
+        if (user_code != code) {
+            iziToast.error({
+                position: 'topRight',
+                color:'red',
+                title: '操作失败，验证码错误',
+                message: 'Error!',
+            });
+        }else{
+            iziToast.success({
+                position: 'topRight',
+                title: '操作成功',
+                message: 'Successfull!',
+            });
+            setTimeout(function(){
+                $("#submit").submit();
+            },3000);
+        }
+
+    })
+
+
+
+</script>
+
+</body>
+</html>

@@ -37,7 +37,9 @@ public class IndexController {
         if(user != null) {
             if(password.equals(user.getPassword())) {
                 session.setAttribute("sessuser", user);
-                return "redirect:/find";
+                User usename = (User) session.getAttribute("sessuser");
+                m.addAttribute("user",usename);
+                return "redirect:/management";
             }
             else
                 return "error";
@@ -107,4 +109,21 @@ public class IndexController {
         return "redirect:/find";
     }
 
+    @GetMapping("/Cancellation")    //下号
+    public String tuihcu(HttpSession session) {
+        User user = new User();
+        session.setAttribute("sessuser", user);
+        session.removeAttribute("sessuser");
+        return "login";
+    }
+
+    @GetMapping("/management")
+    public String management(){
+        return "management";
+    }
+
+    @GetMapping("forget")
+    public  String forgetpwd(){
+        return "forgword";
+    }
 }
