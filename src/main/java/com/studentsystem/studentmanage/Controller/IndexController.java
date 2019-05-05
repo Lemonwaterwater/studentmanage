@@ -10,6 +10,7 @@ import com.studentsystem.studentmanage.service.PhotoService;
 import com.studentsystem.studentmanage.utils.MyPage;
 import com.studentsystem.studentmanage.web.PhotoForm;
 import com.sun.media.sound.ModelDestination;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +41,7 @@ public class IndexController {
         if(user != null) {
             if(password.equals(user.getPassword())) {
                 session.setAttribute("sessuser", user);
-                return "redirect:/find";
+                return "redirect:/test";
             }
             else
                 return "error";
@@ -110,7 +111,7 @@ public class IndexController {
         indexDao.update(student);
         return "redirect:/find";
     }
-    @GetMapping("/photo")
+/*    @GetMapping("/photo")
     public String photo(HttpSession session,Model m){
 //        System.out.println(((User) session.getAttribute("sessuser")).getId());
         String userid = ((User) session.getAttribute("sessuser")).getId();
@@ -119,11 +120,20 @@ public class IndexController {
         String photourl = user.getPhoto();
         m.addAttribute("photourl",photourl);
         return "photo";
-    }
+    }*/
     @PostMapping("/photo")
     public String photos(PhotoForm photoForm,HttpSession session){
         String userid = ((User) session.getAttribute("sessuser")).getId();
         photoService.Addproduct(photoForm,userid);
-        return "redirect:/photo";
+        return "redirect:/test";
+    }
+    @GetMapping("/test")
+    public String gan(HttpSession session, Model m){
+        String userid = ((User) session.getAttribute("sessuser")).getId();
+        Optional<User> users= userRepo.findById(userid);
+        User user = users.get();
+        String photourl = user.getPhoto();
+        m.addAttribute("photourl",photourl);
+        return "management";
     }
 }
