@@ -22,9 +22,9 @@ public class PhotoService {
     @Autowired
     private UserRepo userRepo;
     public void Addproduct(PhotoForm photoForm,String userNo){
+        System.out.println(userNo);
         Optional<User> users= userRepo.findById(userNo);
         User user = users.get();
-        System.out.println(userNo);
 //        BeanUtils.copyProperties(photoForm, user, User.class);
         user.setPhoto(fileUtils.fileUpload(photoForm.getPhotofile()));
 //        user.setId(10086);

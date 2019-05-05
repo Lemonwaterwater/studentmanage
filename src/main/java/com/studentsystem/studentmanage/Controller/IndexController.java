@@ -2,12 +2,14 @@ package com.studentsystem.studentmanage.Controller;
 
 
 import com.studentsystem.studentmanage.Dao.IndexDao;
+import com.studentsystem.studentmanage.Dao.UserRepo;
 import com.studentsystem.studentmanage.Domain.Login;
 import com.studentsystem.studentmanage.Domain.Student;
 import com.studentsystem.studentmanage.Domain.User;
 import com.studentsystem.studentmanage.service.PhotoService;
 import com.studentsystem.studentmanage.utils.MyPage;
 import com.studentsystem.studentmanage.web.PhotoForm;
+import com.sun.media.sound.ModelDestination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.Optional;
 
 @Controller
 @ControllerAdvice
@@ -25,7 +28,8 @@ public class IndexController {
     private IndexDao indexDao;
     @Autowired
     private PhotoService photoService;
-
+    @Autowired
+    private UserRepo userRepo;
     @GetMapping("/")
     public String login() {
         return "login";
@@ -77,7 +81,7 @@ public class IndexController {
         user.setPassword(login.getPassword());
         user.setPassword1(login.getPassword1());
         user.setQqemail(login.getQqemail());
-        user.setPhoto("http://localhost:8088/images/user.jpg");
+        user.setPhoto("http://localhost:8080/images/user.jpg");
         if(login.getPassword().equals(login.getPassword1())){
             indexDao.save(user);
             return "redirect:/";
@@ -107,14 +111,19 @@ public class IndexController {
         return "redirect:/find";
     }
     @GetMapping("/photo")
-    public String photo(HttpSession session){
-        System.out.println(((User) session.getAttribute("sessuser")).getId());
+    public String photo(HttpSession session,Model m){
+//        System.out.println(((User) session.getAttribute("sessuser")).getId());
+        String userid = ((User) session.getAttribute("sessuser")).getId();
+        Optional<User> users= userRepo.findById(userid);
+        User user = users.get();
+        String photourl = user.getPhoto();
+        m.addAttribute("photourl",photourl);
         return "photo";
     }
     @PostMapping("/photo")
     public String photos(PhotoForm photoForm,HttpSession session){
         String userid = ((User) session.getAttribute("sessuser")).getId();
         photoService.Addproduct(photoForm,userid);
-        return "redirect:/";
+        return "redirect:/photo";
     }
 }

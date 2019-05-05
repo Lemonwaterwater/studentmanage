@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+<p>
+    目前用户头像<img th:src="@{${photourl}}" style="width:500px;height:450px;" />
+</p>
 <form enctype="multipart/form-data" method="post" th:action="@{/photo}">
     <p>
         图片:<input type="file" name="photofile"/>

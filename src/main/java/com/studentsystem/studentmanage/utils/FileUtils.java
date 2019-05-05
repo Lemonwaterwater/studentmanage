@@ -43,7 +43,7 @@ public class FileUtils {
 				}
 				
 				
-				return "http://localhost:8088/images/"+fileName;
+				return "http://localhost:8080/images/"+fileName;
 	}
 	
 }
