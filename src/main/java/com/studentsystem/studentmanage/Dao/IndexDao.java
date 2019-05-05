@@ -1,7 +1,7 @@
 package com.studentsystem.studentmanage.Dao;
 
 
-import com.studentsystem.studentmanage.Controller.MyPage;
+import com.studentsystem.studentmanage.utils.MyPage;
 import com.studentsystem.studentmanage.Domain.Student;
 import com.studentsystem.studentmanage.Domain.User;
 import org.hibernate.Criteria;
@@ -9,7 +9,6 @@ import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,8 +50,8 @@ public class IndexDao {
         this.getSession().update(student);
     }
 
-    public User findById(int id) {
-        User user = (User)getSession().get(User.class, id);
+    public User findById(String id) {
+        User user = (User)getSession().get(User.class,id);
         return user;
     }
 

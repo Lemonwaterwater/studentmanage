@@ -1,4 +1,4 @@
-package com.studentsystem.studentmanage.Controller;
+package com.studentsystem.studentmanage.utils;
 
 import lombok.Data;
 
